@@ -1,3 +1,1 @@
-# PS-Algorithm
-
-🔥 baekjoon의 여러 algorithm 문제들을 PS(Problem Solving)하는 과정을 기록할 repository🤞 🔥
+코딩테스트 대비용 알고리즘 문제들 기록용 레포
