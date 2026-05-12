@@ -1,7 +1,10 @@
 def solution(age):
-    newStr = ''
-    strAge = str(age)
-    for i in range(len(strAge)):
-        newStr += chr(int(strAge[i]) + 97)
-    return newStr
     
+    l = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+    
+    a = ''
+    for i in range(len(str(age))):
+        a += l[int(str(age)[i])]
+        
+    return a
+        
