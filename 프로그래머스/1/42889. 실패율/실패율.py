@@ -1,27 +1,31 @@
 def solution(N, stages):
-    now = {}
     
-    fail = {}
+    fail_Dict = {}
     
-    for i in range(1, N+2):
-        now[i] = 0
-        fail[i] = 0
-    
-    for i in stages:
-        now[i] += 1
-    
-    total = len(stages)
-    for i in range(1, N+1):
-        if now[i] != 0:
-            fail[i] = now[i]/total
-            total -= now[i]
+    for stage_Num in range(1, N+1):
+        approached = 0
+        uncleared = 0
+        
+        for i in stages:
+            if i >= stage_Num:
+                approached += 1
+            if i == stage_Num:
+                uncleared += 1
+        if approached == 0:
+            fail_Dict[stage_Num] = 0
         else:
-            fail[i] = 0
-            
-    del fail[N+1]
+            fail_Dict[stage_Num] = uncleared/approached
     
-    a = sorted(fail, key=lambda x : fail[x], reverse=True)
+
+    s = []
+    for key, value in fail_Dict.items():
+        s.append([value, key])
+        
+    s.sort(key=lambda x: (-x[0], x[1]))
     
-    return a
+    ans = []
     
-    
+    for i in range(len(s)):
+        ans.append(s[i][1])
+        
+    return ans
