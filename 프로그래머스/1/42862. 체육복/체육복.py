@@ -1,0 +1,17 @@
+def solution(n, lost, reserve):
+    lost.sort()
+    reserve.sort()
+    reserve_copy = reserve[:]
+    
+    for i in reserve_copy:
+        if i in lost:
+            lost.remove(i)
+            reserve.remove(i)
+    
+    for i in reserve:
+        if i-1 in lost:
+            lost.remove(i-1)
+        elif i+1 in lost:
+            lost.remove(i+1)
+
+    return n - len(lost)
