@@ -1,22 +1,23 @@
 def solution(board, moves):
-    stack = []
-    answer = 0
+    basket = []
+    score = 0
 
-    for move in moves:
-        
-        for i in range(len(board)):
-            if board[i][move - 1] != 0:
-                doll = board[i][move - 1]
-                board[i][move - 1] = 0
+    for i in moves:
+        for j in range(len(board)):
+            if board[j][i - 1] != 0:
+                doll = board[j][i - 1]
 
-                
-                if stack and stack[-1] == doll:
-                    stack.pop()
-                    answer += 2
+                if len(basket) == 0:
+                    basket.append(doll)
+
+                elif basket[-1] != doll:
+                    basket.append(doll)
+
                 else:
-                    stack.append(doll)
+                    basket.pop()
+                    score += 2
 
-                # 인형 하나만 뽑고 다음 move로
+                board[j][i - 1] = 0
                 break
 
-    return answer
+    return score
